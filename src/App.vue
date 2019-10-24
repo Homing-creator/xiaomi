@@ -1,15 +1,13 @@
 <template>
   <div id="app">
-    <v-myIndex></v-myIndex>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MyIndex from './components/MyIndex'
 export default {
   name: 'app',
   components: {
-    'v-myIndex': MyIndex
   }
 }
 </script>

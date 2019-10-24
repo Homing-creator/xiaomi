@@ -1,27 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
-import MyIndex from './components/MyIndex'
-
+import Product from './views/Product'
+import Redmi8A from './components/Product/Redmi8A'
+import MyIndex from './views/MyIndex'
+import Login from './views/Login'
+import ShoppingCart from './views/ShoppingCart'
+import Register from './views/Register'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    { path: '/home', component: MyIndex },
+    { path: '/', redirect: '/home', component: MyIndex },
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/products',
+      component: Product,
+      children: [
+        { path: 'redmi8a', component: Redmi8A }
+      ]
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
+    { path: '/shoppingcart', component: ShoppingCart }
   ]
 })
